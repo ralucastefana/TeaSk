@@ -13,7 +13,6 @@ namespace TeaSk.Data.Context
     {
         public TeaSkDBContext() : base("TeaSk")
         {
-
         }
 
         public DbSet<User> Users { get; set; }
