@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TeaSk.Domain.Entities;
 using TeaSk.Domain.Infrastructure;
 
-namespace TeaSk.Data.Context
+namespace TeaSk.Data.Context //reprezentarea bazei de date
 {
     public class TeaSkDBContext:DbContext
     {
@@ -15,7 +15,7 @@ namespace TeaSk.Data.Context
         {
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }  //setter
         public DbSet<Level> Levels { get; set; }
         public DbSet<Skills> Skills { get; set; }
         public DbSet<Activities> Activities { get; set; }
