@@ -39,7 +39,7 @@ namespace TeaSk.Data.Infrastructures
             {
                 if (disposing)
                 {
-                    _context.Dispose();
+                    _context?.Dispose();
                 }
             }
             _disposed = true;
