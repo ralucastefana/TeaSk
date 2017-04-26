@@ -22,7 +22,7 @@ namespace TeaSk.Web.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+
 
             return View();
         }
@@ -32,6 +32,12 @@ namespace TeaSk.Web.Controllers
         {
             ViewBag.Message = "Events you might be interested in.";
 
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            
             return View();
         }
     }
