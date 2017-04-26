@@ -25,6 +25,7 @@ namespace TeaSk.Web
             container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
             DependencyContainerMapper.InitializeContainer(container, new WebRequestLifestyle());
             container.Verify();
+            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
     }
 }
