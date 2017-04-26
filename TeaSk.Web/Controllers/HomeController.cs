@@ -26,5 +26,13 @@ namespace TeaSk.Web.Controllers
 
             return View();
         }
+
+
+        public ActionResult Events()
+        {
+            ViewBag.Message = "Events you might be interested in.";
+
+            return View();
+        }
     }
 }
