@@ -15,7 +15,7 @@ namespace TeaSk.Web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page."; 
+            ViewBag.Message = "Your application description page.";
 
             return View();
         }
@@ -23,6 +23,14 @@ namespace TeaSk.Web.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+
+        public ActionResult Events()
+        {
+            ViewBag.Message = "Events you might be interested in.";
 
             return View();
         }
