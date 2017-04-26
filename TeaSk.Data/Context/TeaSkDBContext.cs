@@ -11,7 +11,7 @@ namespace TeaSk.Data.Context //reprezentarea bazei de date
 {
     public class TeaSkDBContext:DbContext
     {
-        public TeaSkDBContext() : base("TeaSk")
+        public TeaSkDBContext() : base("Data Source=(LocalDB)\\MSSQLLocalDb;Initial Catalog=TeaSk;Integrated Security=True")
         {
         }
 
