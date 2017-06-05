@@ -73,6 +73,10 @@
     <Compile Include="Migrations\201706051050548_NewDBSetup.Designer.cs">
       <DependentUpon>201706051050548_NewDBSetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706051456242_MinutesAdded.cs" />
+    <Compile Include="Migrations\201706051456242_MinutesAdded.Designer.cs">
+      <DependentUpon>201706051456242_MinutesAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -95,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706051050548_NewDBSetup.resx">
       <DependentUpon>201706051050548_NewDBSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706051456242_MinutesAdded.resx">
+      <DependentUpon>201706051456242_MinutesAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -49,5 +49,13 @@ namespace TeaSk.Web.Controllers
             
             return View();
         }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+                return HttpNotFound();
+            var model = _activitiesService.GetByID((int)id);
+            return View(model);
+        }
     }
 }
