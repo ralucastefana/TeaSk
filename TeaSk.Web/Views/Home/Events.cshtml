@@ -1,26 +1,36 @@
-﻿
+﻿@model List<TeaSk.Domain.Entities.Activities>
+
 @{
     ViewBag.Title = "Events";
 }
 
 <div class="w3-row">
-    <div class="w3-third">
-        <img src="https://www.biancaionel.com/blog/wp-content/uploads/2015/10/bianca-ionel-speaker-codecamp-iasi-20151.png" style="width:100%" alt="Codecamp">
-        <img src="https://static1.squarespace.com/static/52fb3a21e4b0707a0cfc2cc0/t/5746edca86db439a281d4c8b/1392205027040/tex-x-logo.png?format=2500w" style="width:100%" alt="TEDx Conference">
-        <img src="https://www.softlead.ro/pictures/original/1525158c83002a9395-smart-girls-conference-2017.jpg" style="width:100%" alt="Smart Girls! Conference 2017">
-    </div>
+    @for (int i = 0; i < Model.Count; i += 3)
+    {
+        <div class="w3-third">
+            <img src="https://www.biancaionel.com/blog/wp-content/uploads/2015/10/bianca-ionel-speaker-codecamp-iasi-20151.png" style="width:100%" alt="@Model[i].Name">
+            @if (i + 1 < Model.Count)
+            {
+                <img src="https://static1.squarespace.com/static/52fb3a21e4b0707a0cfc2cc0/t/5746edca86db439a281d4c8b/1392205027040/tex-x-logo.png?format=2500w" style="width:100%" alt="@Model[i + 1].Name">
+            }
+            @if (i + 2 < Model.Count)
+            {
+                <img src="https://www.softlead.ro/pictures/original/1525158c83002a9395-smart-girls-conference-2017.jpg" style="width:100%" alt="@Model[i + 2].Name">
+            }
+        </div>
+    }
 
-    <div class="w3-third">
-        <img src="http://www.forbes.ro/wp-content/uploads/2017/04/Facebook_30-sub-30_2017_4.jpg" style="width:100%" alt="Forbes Conference">
-        <img src="https://i0.wp.com/www.radiocraiova.ro/wp-content/uploads/2017/04/pre-hack.png" style="width:100%" alt="Space Apps Challenge">
-        <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F29132902%2F55160458133%2F1%2Foriginal.jpg?w=1000&rect=0%2C103%2C1200%2C600&s=362c48e6f73ede94884d3d8def19fff5" style="width:100%" alt="Stagii pe Bune">
-    </div>
 
-    <div class="w3-third">
-        <img src="http://www.fasttrackit.org/wp-content/uploads/2016/02/QA-1024x573.png" style="width:100%" alt="Training">
-        <img src="https://www.softlead.ro/pictures/original/x600/pictures/original/288465899b3a34ea97-i-take-unconference-2017---codecraftlearnsharerepeat.png" style="width:100%" alt="I T.A.K.E. Unconference">
-        <img src="https://www.softlead.ro/pictures/original/753825521cc8f75be7-iceefest-2015.jpg" style="width:100%" alt="iCEE.fest"
-             ">
-    </div>
+    @*<div class="w3-third">
+            <img src="http://www.forbes.ro/wp-content/uploads/2017/04/Facebook_30-sub-30_2017_4.jpg" style="width:100%" alt="Forbes Conference">
+            <img src="https://i0.wp.com/www.radiocraiova.ro/wp-content/uploads/2017/04/pre-hack.png" style="width:100%" alt="Space Apps Challenge">
+            <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F29132902%2F55160458133%2F1%2Foriginal.jpg?w=1000&rect=0%2C103%2C1200%2C600&s=362c48e6f73ede94884d3d8def19fff5" style="width:100%" alt="Stagii pe Bune">
+        </div>
+
+        <div class="w3-third">
+            <img src="http://www.fasttrackit.org/wp-content/uploads/2016/02/QA-1024x573.png" style="width:100%" alt="Training">
+            <img src="https://www.softlead.ro/pictures/original/x600/pictures/original/288465899b3a34ea97-i-take-unconference-2017---codecraftlearnsharerepeat.png" style="width:100%" alt="I T.A.K.E. Unconference">
+            <img src="https://www.softlead.ro/pictures/original/753825521cc8f75be7-iceefest-2015.jpg" style="width:100%" alt="iCEE.fest"
+                 ">
+        </div>*@
 </div>
-
