@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201704221255554_InitialMigration.Designer.cs">
       <DependentUpon>201704221255554_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706051050548_NewDBSetup.cs" />
+    <Compile Include="Migrations\201706051050548_NewDBSetup.Designer.cs">
+      <DependentUpon>201706051050548_NewDBSetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -88,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704221255554_InitialMigration.resx">
       <DependentUpon>201704221255554_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706051050548_NewDBSetup.resx">
+      <DependentUpon>201706051050548_NewDBSetup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
