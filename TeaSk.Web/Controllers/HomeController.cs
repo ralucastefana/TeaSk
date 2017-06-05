@@ -43,11 +43,5 @@ namespace TeaSk.Web.Controllers
             var model = _activitiesService.GetAll();
             return View(model);
         }
-
-        public ActionResult Login()
-        {
-            
-            return View();
-        }
     }
 }
