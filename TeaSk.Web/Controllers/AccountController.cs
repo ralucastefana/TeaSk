@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Omu.ValueInjecter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,16 +9,31 @@ using System.Web.Mvc;
 using System.Web.Security;
 using TeaSk.Application.Infrastructure;
 using TeaSk.Domain.Entities;
+using TeaSk.Web.Models;
 
 namespace TeaSk.Web.Controllers
 {
     public class AccountController : Controller
     {
         private IService<User> _userService { get; set; }
+        private ApplicationSignInManager _signInManager;
 
         public AccountController(IService<User> userService)
         {
             _userService = userService;
+            //SignInManager = signInManager;  , ApplicationSignInManager signInManager
+        }
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
         }
 
         // GET: Account\
@@ -30,11 +48,12 @@ namespace TeaSk.Web.Controllers
             var user = _userService.GetFirst(x => x.Username == username && x.Password == password);
             if (user != null)
             {
-                FormsAuthentication.SetAuthCookie(username, false);
+                Session["User"]=user;
                 return RedirectToAction("Index", "Home");
             }
             return View();
         }
+
 
         public ActionResult Register()
         {
@@ -57,7 +76,7 @@ namespace TeaSk.Web.Controllers
                     Username = username,
                     Password = password
                 });
-                FormsAuthentication.SetAuthCookie(username, false);
+                Session["User"] = user;
                 return RedirectToAction("Index", "Home");
             }
             else 

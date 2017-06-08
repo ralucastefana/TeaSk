@@ -73,6 +73,10 @@
     <Compile Include="Migrations\201706051050548_NewDBSetup.Designer.cs">
       <DependentUpon>201706051050548_NewDBSetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706081652005_addedPicture.cs" />
+    <Compile Include="Migrations\201706081652005_addedPicture.Designer.cs">
+      <DependentUpon>201706081652005_addedPicture.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -95,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706051050548_NewDBSetup.resx">
       <DependentUpon>201706051050548_NewDBSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706081652005_addedPicture.resx">
+      <DependentUpon>201706081652005_addedPicture.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
