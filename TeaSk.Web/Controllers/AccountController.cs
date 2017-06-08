@@ -5,7 +5,9 @@ using Omu.ValueInjecter;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -57,7 +59,14 @@ namespace TeaSk.Web.Controllers
             return View();
         }
 
-
+        public ActionResult GithubCallback(string code)
+        {
+            
+            var request = WebRequest.Create("https://github.com/login/oauth/authorize?client_id=393bc52e43ee23613eca&client_secret=7070d0523a2da7420409d3bddace0000e0b6fe1a&code=" + code);
+            var response = new StreamReader(request.GetResponse().GetResponseStream()).ReadToEnd();
+            var requestAuth = WebRequest.Create("https://api.github.com/user/repos?access_token="+((dynamic)JObject.Parse(response)).access_token);
+            return View();
+        }
         public ActionResult Register()
         {
             return View();
