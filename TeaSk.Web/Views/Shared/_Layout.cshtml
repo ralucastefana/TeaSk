@@ -43,10 +43,10 @@
 
         <a href="/home/" onclick="w3_close()" class="w3-bar-item w3-button"><h3 class="w3-padding-64 w3-center"><b>TeaSk</b></h3></a>
         <a href="/home/events" onclick="w3_close()" class="w3-bar-item w3-button">EVENTS</a>
-        <a href="/home/about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
-        @if (Request.IsAuthenticated)
+
+        @if (Session["User"]!=null)
         {
-            <a href="/account/login" onclick="w3_close()" class="w3-bar-item w3-button">User</a>
+            <a href="/home/profile" onclick="w3_close()" class="w3-bar-item w3-button">@(((TeaSk.Domain.Entities.User)Session["User"]).Username)</a>
         }
         else
         {
