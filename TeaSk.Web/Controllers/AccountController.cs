@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using Newtonsoft.Json.Linq;
 using Omu.ValueInjecter;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,25 +18,6 @@ namespace TeaSk.Web.Controllers
     public class AccountController : Controller
     {
         private IService<User> _userService { get; set; }
-        private ApplicationSignInManager _signInManager;
-
-        public AccountController(IService<User> userService)
-        {
-            _userService = userService;
-            //SignInManager = signInManager;  , ApplicationSignInManager signInManager
-        }
-
-        public ApplicationSignInManager SignInManager
-        {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set
-            {
-                _signInManager = value;
-            }
-        }
 
         // GET: Account\
         public ActionResult Login()
@@ -51,6 +34,26 @@ namespace TeaSk.Web.Controllers
                 Session["User"]=user;
                 return RedirectToAction("Index", "Home");
             }
+            return View();
+        }
+
+        public ActionResult ExternalLogin(string code, string state)
+        {
+            //Get Accedd Token  
+            var client = new RestClient("https://www.linkedin.com/oauth/v2/accessToken");
+            var request = new RestRequest(Method.POST);
+            request.AddParameter("grant_type", "authorization_code");
+            request.AddParameter("code", code);
+            request.AddParameter("redirect_uri", "http://localhost:54100/account/externallogin");
+            request.AddParameter("client_id", "86solwux7xapvc");
+            request.AddParameter("client_secret", "6Pp5PXP6IVNhIIV9");
+            IRestResponse response = client.Execute(request);
+            var content = response.Content;
+            //Get Profile Details
+            client = new RestClient("https://api.linkedin.com/v1/people/~:(skills)?oauth2_access_token=" + ((dynamic)JObject.Parse(response.Content)).access_token + "&format=json");
+            request = new RestRequest(Method.GET);
+            response = client.Execute(request);
+            content = response.Content;
             return View();
         }
 
