@@ -55,13 +55,22 @@ namespace TeaSk.Web.Controllers
             request.AddParameter("client_id", "86solwux7xapvc");
             request.AddParameter("client_secret", "6Pp5PXP6IVNhIIV9");
             IRestResponse response = client.Execute(request);
-            var content = response.Content;
-            ////Get Profile Details
-            //client = new RestClient("https://api.linkedin.com/v1/people/~:(skills)?oauth2_access_token=" + ((dynamic)JObject.Parse(response.Content)).access_token + "&format=json");
-            //request = new RestRequest(Method.GET);
-            //response = client.Execute(request);
-            //content = response.Content;
-            return View();
+            var accessToken = response.Content;
+
+            var clientEmail = new RestClient("https://www.linkedin.com/v1/people/~:(emailAddress)");
+            var requestEmail = new RestRequest(Method.POST);
+            request.AddParameter("ouath2_access_token", accessToken);
+            request.AddParameter("format", "json");
+            IRestResponse responseEmail = client.Execute(request);
+            var email = responseEmail.Content;
+
+            var user = _userService.GetFirst(x => x.Email == email);
+            if (user == null)
+                return RedirectToAction("Login", "Account");
+
+            Session["User"] = user;
+
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult GithubCallback(string code, string state)
