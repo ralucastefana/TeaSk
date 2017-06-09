@@ -10,7 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
+using System.Linq;
 using TeaSk.Application.Infrastructure;
 using TeaSk.Domain.Entities;
 using TeaSk.Web.Models;
@@ -20,6 +20,11 @@ namespace TeaSk.Web.Controllers
     public class AccountController : Controller
     {
         private IService<User> _userService { get; set; }
+
+        public AccountController(IService<User> userService)
+        {
+            _userService = userService;
+        }
 
         // GET: Account\
         public ActionResult Login()
@@ -33,7 +38,7 @@ namespace TeaSk.Web.Controllers
             var user = _userService.GetFirst(x => x.Username == username && x.Password == password);
             if (user != null)
             {
-                Session["User"]=user;
+                Session["User"] = user;
                 return RedirectToAction("Index", "Home");
             }
             return View();
@@ -51,21 +56,50 @@ namespace TeaSk.Web.Controllers
             request.AddParameter("client_secret", "6Pp5PXP6IVNhIIV9");
             IRestResponse response = client.Execute(request);
             var content = response.Content;
-            //Get Profile Details
-            client = new RestClient("https://api.linkedin.com/v1/people/~:(skills)?oauth2_access_token=" + ((dynamic)JObject.Parse(response.Content)).access_token + "&format=json");
-            request = new RestRequest(Method.GET);
-            response = client.Execute(request);
-            content = response.Content;
+            ////Get Profile Details
+            //client = new RestClient("https://api.linkedin.com/v1/people/~:(skills)?oauth2_access_token=" + ((dynamic)JObject.Parse(response.Content)).access_token + "&format=json");
+            //request = new RestRequest(Method.GET);
+            //response = client.Execute(request);
+            //content = response.Content;
             return View();
         }
 
-        public ActionResult GithubCallback(string code)
+        public ActionResult GithubCallback(string code, string state)
         {
-            
-            var request = WebRequest.Create("https://github.com/login/oauth/authorize?client_id=393bc52e43ee23613eca&client_secret=7070d0523a2da7420409d3bddace0000e0b6fe1a&code=" + code);
+
+            var request = (HttpWebRequest)WebRequest.Create("https://github.com/login/oauth/access_token?client_id=393bc52e43ee23613eca&client_secret=7070d0523a2da7420409d3bddace0000e0b6fe1a&code=" + code);
+            request.Accept = "application/json";
             var response = new StreamReader(request.GetResponse().GetResponseStream()).ReadToEnd();
-            var requestAuth = WebRequest.Create("https://api.github.com/user/repos?access_token="+((dynamic)JObject.Parse(response)).access_token);
-            return View();
+            var accoessToken = (string)((dynamic)JObject.Parse(response)).access_token;
+
+            var requestUser = (HttpWebRequest)WebRequest.Create("https://api.github.com/user/emails?access_token=" + accoessToken);
+            requestUser.UserAgent = "Anything";
+            var responseUser = new StreamReader(requestUser.GetResponse().GetResponseStream()).ReadToEnd();
+            var gitUser = (string)((dynamic)JArray.Parse(responseUser))[0].email;
+
+            var user = _userService.GetFirst(x => x.Email == gitUser);
+            if (user == null)
+                return RedirectToAction("Index", "Home");
+
+            var requestRepo = (HttpWebRequest)WebRequest.Create("https://api.github.com/user/repos?access_token=" + accoessToken);
+            requestRepo.UserAgent = "Anything";
+            var responseRepo = new StreamReader(requestRepo.GetResponse().GetResponseStream()).ReadToEnd();
+            var repositories = ((dynamic)JArray.Parse(responseRepo));
+            var list = new List<string>();
+            foreach (var repo in repositories)
+            {
+                var language = (string)repo.language;
+                if (!list.Contains(language) && !string.IsNullOrEmpty(language))
+                    list.Add(language);
+            }
+            var newSkills = list.Where(x => !user.Skills.ToList().Exists(y => y.Name == x));
+            foreach (var skill in newSkills)
+            {
+                user.Skills.Add(new Skills { Name = skill });
+            }
+            _userService.Update(user);
+            Session["User"] = user;
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult Register()
         {
@@ -76,7 +110,7 @@ namespace TeaSk.Web.Controllers
         public ActionResult Register(string name, string surname, DateTime birthDate, string phone, string email, string username, string password)
         {
             var user = _userService.GetFirst(x => x.Email == email && x.Username == username);
-            if(user == null)
+            if (user == null)
             {
                 _userService.Add(new User
                 {
@@ -91,7 +125,7 @@ namespace TeaSk.Web.Controllers
                 Session["User"] = user;
                 return RedirectToAction("Index", "Home");
             }
-            else 
+            else
                 ViewBag.Message = "Account already in use!";
             return View();
         }
