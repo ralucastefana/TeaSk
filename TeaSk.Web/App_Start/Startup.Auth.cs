@@ -5,6 +5,8 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using TeaSk.Web.Models;
+using Owin.Security.Providers.LinkedIn;
+using System.Configuration;
 
 namespace TeaSk.Web
 {
@@ -62,6 +64,12 @@ namespace TeaSk.Web
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+            app.UseLinkedInAuthentication
+            (
+                clientId: ConfigurationManager.AppSettings["LinkedInAPIKey"].ToString(),
+                clientSecret: ConfigurationManager.AppSettings["LinkedInAPISecret"].ToString()
+            );
         }
     }
 }

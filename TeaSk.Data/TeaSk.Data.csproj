@@ -105,7 +105,6 @@
       <DependentUpon>201706051050548_NewDBSetup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706051456242_MinutesAdded.resx">
-      <DependentUpon>201706051456242_MinutesAdded.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706081652005_addedPicture.resx">
       <DependentUpon>201706081652005_addedPicture.cs</DependentUpon>
