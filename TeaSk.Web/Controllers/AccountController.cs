@@ -110,6 +110,35 @@ namespace TeaSk.Web.Controllers
             Session["User"] = user;
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult StackCallback(string code, string state)
+        {
+            //Get Accedd Token  
+            var client = new RestClient("https://stackexchange.com/oauth/access_token");
+            var request = new RestRequest(Method.POST);
+            request.AddParameter("code", code);
+            request.AddParameter("redirect_uri", "http://localhost:54100/account/stackcallback");
+            request.AddParameter("client_id", "10067");
+            request.AddParameter("client_secret", "u0u4qfR6veEhRphyw3O0QA((");
+            IRestResponse response = client.Execute(request);
+            var accessToken = response.Content;
+
+            var clientEmail = new RestClient("https://www.linkedin.com/v1/people/~:(emailAddress)");
+            var requestEmail = new RestRequest(Method.POST);
+            request.AddParameter("ouath2_access_token", accessToken);
+            request.AddParameter("format", "json");
+            IRestResponse responseEmail = client.Execute(request);
+            var email = responseEmail.Content;
+
+            var user = _userService.GetFirst(x => x.Email == email);
+            if (user == null)
+                return RedirectToAction("Login", "Account");
+
+            Session["User"] = user;
+
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult Register()
         {
             return View();
