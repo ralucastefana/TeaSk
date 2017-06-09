@@ -11,7 +11,7 @@ namespace TeaSk.Data.Context //reprezentarea bazei de date
 {
     public class TeaSkDBContext:DbContext
     {
-        public TeaSkDBContext() : base("Data Source=tcp:192.168.0.104,49172;Initial Catalog=TeaSk;Integrated Security=True")
+        public TeaSkDBContext() : base("Data Source=Stefana;Initial Catalog=TeaSk;Integrated Security=True")
         {
         }
 

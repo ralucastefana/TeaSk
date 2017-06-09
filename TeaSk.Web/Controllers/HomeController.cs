@@ -22,11 +22,11 @@ namespace TeaSk.Web.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Profile()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            if (Session["User"] == null)
+                return HttpNotFound();
+            return View((User)Session["User"]);
         }
 
         public ActionResult Contact()
@@ -42,12 +42,6 @@ namespace TeaSk.Web.Controllers
             ViewBag.Message = "Events you might be interested in.";
             var model = _activitiesService.GetAll();
             return View(model);
-        }
-
-        public ActionResult Login()
-        {
-            
-            return View();
         }
 
         public ActionResult Details(int? id)
