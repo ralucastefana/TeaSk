@@ -14,5 +14,6 @@ namespace TeaSk.Domain.Entities
         public string Description { get; set; }
         public string Type { get; set; }
         public string Image { get; set; }
+        public int Minutes { get; set; }
     }
 }

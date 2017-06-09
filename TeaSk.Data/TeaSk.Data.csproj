@@ -73,6 +73,9 @@
     <Compile Include="Migrations\201706051050548_NewDBSetup.Designer.cs">
       <DependentUpon>201706051050548_NewDBSetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706051456242_MinutesAdded.cs" />
+    <Compile Include="Migrations\201706051456242_MinutesAdded.Designer.cs">
+      <DependentUpon>201706051456242_MinutesAdded.cs</DependentUpon>
     <Compile Include="Migrations\201706081652005_addedPicture.cs" />
     <Compile Include="Migrations\201706081652005_addedPicture.Designer.cs">
       <DependentUpon>201706081652005_addedPicture.cs</DependentUpon>
@@ -100,6 +103,8 @@
     <EmbeddedResource Include="Migrations\201706051050548_NewDBSetup.resx">
       <DependentUpon>201706051050548_NewDBSetup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706051456242_MinutesAdded.resx">
+      <DependentUpon>201706051456242_MinutesAdded.cs</DependentUpon>
     <EmbeddedResource Include="Migrations\201706081652005_addedPicture.resx">
       <DependentUpon>201706081652005_addedPicture.cs</DependentUpon>
     </EmbeddedResource>
