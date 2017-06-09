@@ -15,5 +15,7 @@ namespace TeaSk.Domain.Entities
         public string Type { get; set; }
         public string Image { get; set; }
         public int Minutes { get; set; }
+
+        public virtual Skills Skill { get; set; }
     }
 }
