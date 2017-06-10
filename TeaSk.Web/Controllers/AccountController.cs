@@ -167,5 +167,15 @@ namespace TeaSk.Web.Controllers
                 ViewBag.Message = "Account already in use!";
             return View();
         }
+
+        public ActionResult Attend(int? userid, int? eventId)
+        {
+            //var user = (User)Session["User"];
+            var user = _userService.GetByID(((User)Session["User"]).Id);
+            user.Points += 10;
+            _userService.Update(user);
+            Session["User"] = user;
+            return null;
+        }
     }
 }
