@@ -5,12 +5,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 using TeaSk.Application.Infrastructure;
 using TeaSk.Domain.Entities;
 
 namespace TeaSk.Web.Controllers
 {
-    public class JsonController : ApiController
+    public class JsonController : Controller
     {
         private readonly IService<Activities> _activitiesService;
         private readonly IService<User> _userService;
@@ -22,12 +23,20 @@ namespace TeaSk.Web.Controllers
 
         public string Users()
         {
-            return JsonConvert.SerializeObject(_userService.GetAll());
+            return JsonConvert.SerializeObject(_userService.GetAll(), Formatting.Indented,
+                                new JsonSerializerSettings
+                                {
+                                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                                });
         }
 
         public string Events()
         {
-            return JsonConvert.SerializeObject(_activitiesService.GetAll());
+            return JsonConvert.SerializeObject(_activitiesService.GetAll(), Formatting.Indented,
+                                new JsonSerializerSettings
+                                {
+                                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                                });
         }
     }
 }

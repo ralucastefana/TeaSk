@@ -1,39 +1,46 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
+using System.Xml;
+using System.Xml.Serialization;
+using TeaSk.Application.Infrastructure;
+using TeaSk.Domain.Entities;
 
 namespace TeaSk.Web.Controllers
 {
-    public class XmlController : ApiController
+    public class XmlController : Controller
     {
-        // GET: api/Xml
-        public IEnumerable<string> Get()
+        private readonly IService<Activities> _activitiesService;
+        private readonly IService<User> _userService;
+        public XmlController(IService<Activities> activitiesService, IService<User> userService)
         {
-            return new string[] { "value1", "value2" };
+            _activitiesService = activitiesService;
+            _userService = userService;
         }
 
-        // GET: api/Xml/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //public string Users()
+        //{
+        //    string result;
+        //    return new XmlSerializer(typeof(List<User>)).Serialize(result,_userService.GetAll())
+        //    return XmlConvert.SerializeObject(_userService.GetAll(), Formatting.Indented,
+        //                        new XmlSerializerSettings
+        //                        {
+        //                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        //                        });
+        //}
 
-        // POST: api/Xml
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/Xml/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Xml/5
-        public void Delete(int id)
-        {
-        }
+        //public string Events()
+        //{
+        //    return JsonConvert.SerializeObject(_activitiesService.GetAll(), Formatting.Indented,
+        //                        new JsonSerializerSettings
+        //                        {
+        //                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        //                        });
+        //}
     }
 }
