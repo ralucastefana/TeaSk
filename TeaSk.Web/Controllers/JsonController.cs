@@ -15,10 +15,12 @@ namespace TeaSk.Web.Controllers
     {
         private readonly IService<Activities> _activitiesService;
         private readonly IService<User> _userService;
-        public JsonController(IService<Activities> activitiesService, IService<User> userService)
+        private readonly IService<Skills> _skillsService;
+        public JsonController(IService<Activities> activitiesService, IService<User> userService, IService<Skills> skillsService)
         {
             _activitiesService = activitiesService;
             _userService = userService;
+            _skillsService = skillsService;
         }
 
         public string Users()
@@ -38,5 +40,16 @@ namespace TeaSk.Web.Controllers
                                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                                 });
         }
+
+        public string Skills()
+        {
+            return JsonConvert.SerializeObject(_skillsService.GetAll(), Formatting.Indented,
+                                new JsonSerializerSettings
+                                {
+                                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                                });
+        }
+
+
     }
 }
