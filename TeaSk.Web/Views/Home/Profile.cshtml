@@ -21,7 +21,11 @@
         <h4><b>Your profile</b></h4>
         <img src="http://www.cbronline.com/wp-content/uploads/2017/02/Fotolia_108869632_Subscription_Monthly_M-770x590.jpg" alt="Me" class="w3-image w3-padding-32" width="400" height="450">
         <div class="w3-content w3-justify" style="max-width:600px">
-            <h4><center>@Model.Name @Model.Surname &#9658; Level @Model.Level</center></h4>
+            <h4><center>@Model.Name @Model.Surname &#9658; Level @(Model.Points / 50 + 1)</center></h4>
+            <p class="w3-wide">@Model.Points</p>
+            <div class="w3-white">
+                <div class="w3-container w3-padding-small w3-center w3-grey" style="width:@((Model.Points%50)*2+Model.Points/10%10)%">@((Model.Points % 50) * 2 + Model.Points / 10 % 10)%</div>
+            </div>
             <hr class="w3-opacity">
             <h4 class="w3-padding-16">Technical Skills</h4>
             <p class="w3-wide">C#</p>
@@ -78,14 +82,14 @@
 
 
 
-    
 
-<script>
-    // Modal Image Gallery
-    function onClick(element) {
-        document.getElementById("img01").src = element.src;
-        document.getElementById("modal01").style.display = "block";
-        var captionText = document.getElementById("caption");
-        captionText.innerHTML = element.alt;
-    }
-</script>
+
+    <script>
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
