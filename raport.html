@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+ +<html lang="en-GB">
+ +  <head>
+ +    <meta charset="utf-8">
+ +    <meta name="viewport" content="width=device-width">
+ +    <title>TeaSk</title>
+ +    <link rel="stylesheet" href="raport.css">
+ +    <link rel="stylesheet" href="node_modules/prismjs/themes/prism-coy.css">
+ +    <script src="node_modules/prismjs/prism.js" defer></script>
+ +  </head>
+ +
+ +  <body>
+ +    <header>
+ +      <p class="title">TeaSk</p>
+ +      <p class="subtitle">Technical Skill Enhancer</p>
+ +    </header>
+ +    <article id="echipa" typeof="schema:ScholarlyArticle" resource="#">
+ +      <h1>Scortanu Stefana Raluca, Toader Stefana Teodora</h1>
+ +      <section>
+ +        <ol>
+ +          <li property="schema:author" typeof="sa:ContributorRole">
+ +            <a property="schema:author" href="https://github.com/stefanatoader" typeof="schema:Person">
+ +              <span property="schema:familyName">Toader</span>
+ +              <span property="schema:givenName"> Ştefana Teodora </span>
+ +            </a>
+ +          </li>
+ +          <li property="schema:author" typeof="sa:ContributorRole">
+ +            <a property="schema:author" href="https://github.com/ralucastefana" typeof="schema:Person">
+ +              <span property="schema:familyName">Scorţanu</span>
+ +              <span property="schema:givenName"> Ştefana Raluca </span>
+ +            </a>
+ +          </li>
+ +        <ol>
+ +          <li id="fii">
+ +            <a href="https://www.info.uaic.ro/bin/Main/" typeof="schema:Corporation">
+ +              <span property="schema:name">Facultatea de Informatică Iaşi</span>
+ +            </a>
+ +          </li>
+ +        </ol>
+ +      </section>
+ +
+ +      <section id="intro">
+ +        <h1>Introducere</h1>
+ +        <p>
+ +          TeaSk este o aplicatie Web capabila sa ofere intr-o forma atractiva o lista a celor mai reprezentative evenimente (conferinte, ateliere de lucru, concursuri, stagii de practica) la care un utilizator ar putea participa pentru a-si imbunatati aptitudinile tehnice dintr-un domeniu de interes. Sugestiile expuse se vor baza pe un profil tehnic al persoanei, construit utilizand informatii de interes colectate din situri specializate – e.g., retele sociale profesionale (de exemplu, LinkedIn), sisteme de stocare si gestiune a codului sursa (minimal, GitHub). Aceste surse vor putea fi ajustate de utilizator. De asemenea, sistemul trebuie sa urmareasca evolutia utilizatorilor (de exemplu, actualizarea profilului in functie de sugestiile oferite), eventual oferind suport pentru 'gamification'. Diversele statistici vor fi disponibile in formatele HTML, JSON si XML.
+ 
+ +        </p>
+ +      </section>
+ +      <section id="scop">
+ +        <h1>Scop</h1>
+ +        <p>
+ +          <strong>Scopul</strong> acestei aplicații web este de a oferi utilizatorilor sugestii de evenimente IT, bazate pe aptitudinile acestora.
+ +       
+ +      </section>
+ +      <section typeof="sa:Abstract" id="scop">
+ +        <h1>Work Flow</h1>
+ +         <figure typeof="sa:Image">
+ +            <img src="C:\Users\Stefana\Desktop\tw\Index_1.png" width="880" height="655">
+ +            <figcaption>
+ +              <p>  Home page-ul aplicației conține un meniu unde se regăsesc: pagina cu lista evenimentelor, pagina pentru login/register și pagina de contact.  </p>
+ +            </figcaption>
+ +            <h2><small>Register</small></h2>
+ +          </figure>
+ +         <figure typeof="sa:Image">
+ +            <img src="C:\Users\Stefana\Desktop\tw\register.png" width="880" height="655">
+ +            <figcaption>
+ +              <ul>
+ +                <li><code>Name</code>: Numele de familie.</li>
+ +                <li><code>Surname</code>: Prenumele.</li>
+				  <li><code>Phone Number</code>: Numarul de telefon.</li>
+ +                <li><code>E-mail</code>: Adresa de e-mail.</li>
+				  <li><code>Birth Date</code>: Data Naterii.</li>
+				  <li><code>Username</code>: Numele de utilizator.</li>				  
+ +                <li><code>Password</code>: Parola cu care utilizatorul îşi va putea accesa contul, aceasta este criptata la scriere.</li>
+ +              </ul>
+ +            </figcaption>
+ +            <h2><small>Login</small></h2>
+ +          </figure>
+ +          <figure typeof="sa:Image">
+ +            <img src="C:\Users\Stefana\Desktop\tw\login.png" width="880" height="655">
+ +            <figcaption>
+ +              <p>
+ +                 Interfața de login a unui utilizator, cuprinde câmpurile de username și parolă. 
+ +              </p>
+ +              <ul>
+ +                <li><code>Username</code>:  Utilizatorul va completa acest câmp cu usernameul cu care este înregistrat.</li>
+ +                <li><code>Password</code>:  După care, va introduce parola corespunzătoare.</li>
+ +              </ul>
+ +              <p>  După ce se va loga, utilizatorul va fi directat către acceași pagină de index, doar că acum va putea să acceseze pagina profilului său. 
+ +            </figcaption>
+ +          </figure>
+ +
+ +           <h2><small>Profil</small></h2>
+ +          </figure>
+ +          <figure typeof="sa:Image">
+ +            <img src="C:\Users\Stefana\Desktop\tw\profil.png" width="880" height="655">
+ +            <figcaption>
+ +              <p>
+ +                 Pe baza aptitudinilor preluate prin sincronizarea contului cu cel de GitHub, va putea vizualiza rata de progres pentru primele sale 3 aptitudini. Rata acestora va crește odată cu participarea userului la câte un eveniment. Acest lucru va fi contorizat printr-un buton "Attend", care va fi vizibil doar în intervalul orar în care se desfășoară evenimentul.  Tag-ul pentru "Login" din meniu va fi înlocuit cu usernameul utilizatorului
+ +              </p> 
+ +            </figcaption>
+ +          </figure>
+ +
+ +          <h2><small>Evenimente</small></h2>
+ +          </figure>
+ +          <figure typeof="sa:Image">
+ +            <img src="C:\Users\Stefana\Desktop\tw\events.png" width="880" height="655">
+ +            <figcaption>
+ +              <p>
+ +                 În această pagină, utilizatorul poate vedea toate evenimentele care urmează. 
+ +               </p> 
+ +            </figcaption>
+ +          </figure>
+ +         
+ +      </section>
+ +
+ +      <section id="arhi">
+ +        <h1>Arhitectura aplicației </h1>
+ +        <p>
+ +          Aplicaţia este construită în C#, folosind framework-ul .Net .<br>
+ +        </p>
+ +         <h1>Secțiunile aplicației </h1>
+ +        <ul>
+ +          <li>
+ +             <code>Home</code> aceasta este prima pagina cu care userul are contact.
+ +  
+ +           </li> 
+ +           <li> 
+ +             <code>Register / Login</code> secțiuni ce se ocupă de înregistrarea userilor cât și logarea acestora în sistem.
+ +           </li> 
+ +           <li> 
+ +             <code>Profile</code> Este sectiunea in care userul va putea sa isi urmareasca progresul in urma participarii la evenimentele propuse de TeaSk. 
+ +
+ +         <h1>Etape de dezvoltare </h1>
+ +        
+ +        <p>
+ +          Principalele etape de dezvoltare a aplicației sunt următoarele :
+ +        </p>
+ +        <ul>
+ +          <li>
+ +             Proiectarea bazei de date folosind Entity Framework code first, ce va stoca diverse informații despre useri și evenimente. 
+ +           </li> 
+ +           <li> 
+ +             Implementarea pe partea de front-end a paginilor necesare workflow-ului aplicației, folosind HTML și CSS. 
+ +           </li> 
+ +           <li> 
+ +             Crearea legăturii dintre front end și backend. 
+ +           </li> 
+ +           <li> 
+ +             Implementarea funcționalităților de Register, Login și sesiuni. 
+ +           </li> 
+ +           <li> 
+ +             Popularea bazei de date cu evenimente. 
+ +           </li> 
+ +           <li> 
+ +             Implementarea API-urilor de la Github și LinkedIn pentru a putea crea profilul utilizatorului. 
+ +           </li> 
+ +           <li> 
+ +             Implementarea sistemului de recomandare a evenimentelor pe baza profilului utilizatorului. 
+ +           </li> 
+ +        </ul>                
+ +      </section>
+ +      <section id="api">
+ +        <h1>API-uri utilizate</h1>
+ +        <section id="fcb">
+ +          <h3>Github API</h3>
+ +          <p>
+ +          API-ul Github este folosit pentru a prelua informatii referitoare la numarul de repositories si la tehnologiile predominante.
+ +          </p>
+ +        </section>  
+ +        <section id="twt">
+ +          <h3>LinkedIn API</h3>
+ +          <p>
+ +          API-ul de LinkedIn este folosit pentru a da posibilitatea userului de a se loga prin acest API.
+ +          </p>
+ +          
+ +        </section>  
+ +      </section> 
+ +      <section id="concluzie">
+ +        <h2>Concluzie</h2>
+ +        <p>
+ +           Technical Skill Enhancer este o aplicație destinată împătimiților IT care doresc să fie la curent cu ultimele noutăți.
+ +        </p>
+ +      </section>       
+ +    </article>
+ +  </body>
+ +</html>
