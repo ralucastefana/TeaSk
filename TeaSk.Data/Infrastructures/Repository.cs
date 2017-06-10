@@ -5,7 +5,7 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using System.Threading.Tasks;
+using Omu.ValueInjecter;
 using TeaSk.Domain.Infrastructure;
 
 namespace TeaSk.Data.Infrastructures
@@ -72,6 +72,8 @@ namespace TeaSk.Data.Infrastructures
                 {
                     throw new ArgumentNullException(nameof(entity));
                 }
+                Entities.Attach(entity);
+                _context.Entry(entity).State = EntityState.Modified;
                 _context.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)

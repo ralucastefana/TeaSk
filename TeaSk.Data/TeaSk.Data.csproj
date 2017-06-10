@@ -81,6 +81,18 @@
     <Compile Include="Migrations\201706081652005_addedPicture.Designer.cs">
       <DependentUpon>201706081652005_addedPicture.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706091948290_newImageLink.cs" />
+    <Compile Include="Migrations\201706091948290_newImageLink.Designer.cs">
+      <DependentUpon>201706091948290_newImageLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706091955338_added new column.cs" />
+    <Compile Include="Migrations\201706091955338_added new column.Designer.cs">
+      <DependentUpon>201706091955338_added new column.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706091959544_added activities skill.cs" />
+    <Compile Include="Migrations\201706091959544_added activities skill.Designer.cs">
+      <DependentUpon>201706091959544_added activities skill.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -108,6 +120,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706081652005_addedPicture.resx">
       <DependentUpon>201706081652005_addedPicture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706091948290_newImageLink.resx">
+      <DependentUpon>201706091948290_newImageLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706091955338_added new column.resx">
+      <DependentUpon>201706091955338_added new column.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706091959544_added activities skill.resx">
+      <DependentUpon>201706091959544_added activities skill.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
